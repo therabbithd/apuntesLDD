@@ -95,30 +95,30 @@ ej
        - NO ACTION(Valor por defecto):<br>
         NO ACTION define que no hace nada<br>
         ej update:
-        ```sql 
-        CREATE TABLE padres (
-          id INT PRIMARY KEY
-        );
-
-        CREATE TABLE hijos (
-          id INT PRIMARY KEY,
-          padre_id INT,
-          FOREIGN KEY (padre_id) REFERENCES padres(id) ON UPDATE NO ACTION
-        );
-        ```
-        ej delete:
-        ```sql
+          ```sql 
           CREATE TABLE padres (
-            id INT PRIMARY KEY,
-            nombre VARCHAR(50)
+            id INT PRIMARY KEY
           );
+
           CREATE TABLE hijos (
             id INT PRIMARY KEY,
-            nombre VARCHAR(50),
             padre_id INT,
-            FOREIGN KEY (padre_id) REFERENCES padres(id) ON DELETE NO ACTION
+            FOREIGN KEY (padre_id) REFERENCES padres(id) ON UPDATE NO ACTION
           );
-        ```
+          ```
+          ej delete:
+          ```sql
+            CREATE TABLE padres (
+              id INT PRIMARY KEY,
+              nombre VARCHAR(50)
+            );
+            CREATE TABLE hijos (
+              id INT PRIMARY KEY,
+              nombre VARCHAR(50),
+              padre_id INT,
+              FOREIGN KEY (padre_id) REFERENCES padres(id) ON DELETE NO ACTION
+            );
+          ```
       - CASCADE:<BR>
         hace la accion en cascada es decir al hacerlo en la tabla donde lo haces tambien lo borras en las tablas referidas<br>
         ej de update
