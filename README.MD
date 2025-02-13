@@ -56,12 +56,12 @@ ej
     ```
     ejemplo real:
   ```sql
-        CREATE TABLE Persons (
-            Personid INT IDENTITY(1,1) PRIMARY KEY,
-            LastName VARCHAR(255) NOT NULL,
-            FirstName VARCHAR(255),
-            Age INT
-            );
+  CREATE TABLE Persons (
+    Personid INT IDENTITY(1,1) PRIMARY KEY,
+    LastName VARCHAR(255) NOT NULL,
+    FirstName VARCHAR(255),
+    Age INT
+  );
     ```
 * FOREIGN KEY:<br>
   es cuando un dato es otra tabla por lo que se usa la clave de la otra tabla <br>
@@ -88,6 +88,70 @@ ej
     REFERENCES Persons(PersonID)
   );
   ```
+* REGLAS DE BORRADO  Y DE ACTUALIZACIÓN:<BR>
+  -  Indica en la definición de la
+    FOREIGN KEY qué debe ocurrir en la tabla referencial cuando hay un intento de
+    modificar o borrar un valor de PRIMARY KEY<BR>
+       - NO ACTION(Valor por defecto):<br>
+        NO ACTION define que no hace nada<br>
+        ej update:
+        ```sql 
+        CREATE TABLE padres (
+          id INT PRIMARY KEY
+        );
+
+        CREATE TABLE hijos (
+          id INT PRIMARY KEY,
+          padre_id INT,
+          FOREIGN KEY (padre_id) REFERENCES padres(id) ON UPDATE NO ACTION
+        );
+        ```
+        ej delete:
+        ```sql
+          CREATE TABLE padres (
+            id INT PRIMARY KEY,
+            nombre VARCHAR(50)
+          );
+          CREATE TABLE hijos (
+            id INT PRIMARY KEY,
+            nombre VARCHAR(50),
+            padre_id INT,
+            FOREIGN KEY (padre_id) REFERENCES padres(id) ON DELETE NO ACTION
+          );
+        ```
+      - CASCADE:<BR>
+        hace la accion en cascada es decir al hacerlo en la tabla donde lo haces tambien lo borras en las tablas referidas<br>
+        ej de update
+        ```sql
+        CREATE TABLE padres (
+          id INT PRIMARY KEY,
+          nombre VARCHAR(50)
+        );
+
+        CREATE TABLE hijos (
+          id INT PRIMARY KEY,
+          nombre VARCHAR(50),
+          padre_id INT,
+          FOREIGN KEY (padre_id) REFERENCES padres(id) ON DELETE CASCADE
+        );
+        ```
+        ej de delete:
+        ```sql
+        CREATE TABLE padres (
+          id INT PRIMARY KEY,
+          nombre VARCHAR(50)
+        );
+
+        CREATE TABLE hijos (
+          id INT PRIMARY KEY,
+          nombre VARCHAR(50),
+          padre_id INT,
+          FOREIGN KEY (padre_id) REFERENCES padres(id) ON DELETE NO ACTION
+        );
+        ```
+
+  
+    
 
 
 
