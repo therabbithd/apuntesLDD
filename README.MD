@@ -120,7 +120,7 @@ ej
             );
           ```
       - CASCADE:<BR>
-        hace la accion en cascada es decir al hacerlo en la tabla donde lo haces tambien lo borras en las tablas referidas<br>
+        El `CASCADE` hace la accion en cascada es decir al hacerlo en la tabla donde lo haces tambien lo borras en las tablas referidas<br>
         ej de update
         ```sql
         CREATE TABLE padres (
@@ -147,6 +147,37 @@ ej
           nombre VARCHAR(50),
           padre_id INT,
           FOREIGN KEY (padre_id) REFERENCES padres(id) ON DELETE NO ACTION
+        );
+        ```
+      - SET NULL:<BR>
+        el `SET NULL` dice que cuando se haga la accion lo pondra a nulo:<br>
+        ej update:
+        ```sql
+        CREATE TABLE departamentos (
+          id INT PRIMARY KEY,
+          nombre VARCHAR(100) NOT NULL
+        );
+
+        CREATE TABLE empleados (
+          id INT PRIMARY KEY,
+          nombre VARCHAR(100) NOT NULL,
+          departamento_id INT,
+          FOREIGN KEY (departamento_id) REFERENCES departamentos(id)
+          ON UPDATE SET NULL
+        );
+        ```
+        ej delete:
+        ```sql
+          CREATE TABLE departamentos (
+              id INT PRIMARY KEY,
+              nombre VARCHAR(100) NOT NULL
+          );
+          CREATE TABLE empleados (
+              id INT PRIMARY KEY,
+              nombre VARCHAR(100) NOT NULL,
+              departamento_id INT,
+              FOREIGN KEY (departamento_id) REFERENCES departamentos(id)
+              ON DELETE SET NULL
         );
         ```
 
