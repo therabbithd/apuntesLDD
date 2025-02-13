@@ -180,6 +180,23 @@ ej
               ON DELETE SET NULL
         );
         ```
+      - SET DEFAULT:<BR>
+        El `set default` hace que cuando que al hacer la accion pone el valor por defecto(si no hay valor por defecto y admite nulo pone null)
+        ```sql
+          CREATE TABLE departamentos (
+            id INT PRIMARY KEY,
+            nombre VARCHAR(100) NOT NULL
+          );
+
+          CREATE TABLE empleados (
+              id INT PRIMARY KEY,
+              nombre VARCHAR(100) NOT NULL,
+              departamento_id INT DEFAULT 99,  -- El valor por defecto para empleados sin departamento
+              FOREIGN KEY (departamento_id) REFERENCES departamentos(id)
+              ON DELETE SET DEFAULT
+          );
+        ```
+        
 
   
     
