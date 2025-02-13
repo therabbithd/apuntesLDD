@@ -28,14 +28,13 @@ ALT-->V3
 ALT-->I3
 ```
 ## CREATE TABLE
-ejemplo de comando create table
+Ejemplo de comando create table
 ```sql
 CREATE TABLE tabla (col1 tipo_de_datos[NOT NULL][RESTRICCIONES])
 ```
 ### RESTRICCIONES 
 * IDENTITY:
-
-  proporciona una valor incremental que va sumando por cada fila que se crea se suele usar en las PRIMARY KEY POR EJ:<BR>
+  Proporciona una valor incremental que va sumando por cada fila que se crea se suele usar en las PRIMARY KEY POR EJ:<BR>
   ```sql
   Personid int IDENTITY([numero en el que empieza],[numero que se incrementa]) ,
   ```
@@ -49,7 +48,7 @@ CREATE TABLE tabla (col1 tipo_de_datos[NOT NULL][RESTRICCIONES])
     );
   ```
 * PRIMARY KEY:<br> 
-es una clave que identifica a la tabla **DEBE SER UNICO** y es recomendable que no lo cree el usuario y que se cree automaticamente:
+Es una clave que identifica a la tabla **DEBE SER UNICO** y es recomendable que no lo cree el usuario y que se cree automáticamente:
 ej
     ```sql
     Personid int PRIMARY KEY,
@@ -64,7 +63,7 @@ ej
   );
     ```
 * FOREIGN KEY:<br>
-  es cuando un dato es otra tabla por lo que se usa la clave de la otra tabla <br>
+  Es cuando un dato es otra tabla por lo que se usa la clave de la otra tabla <br>
   ej manera 1:
   ```sql
   c2 INT FOREIGN KEY REFERENCES tabla_objetivo(c1)
@@ -120,7 +119,7 @@ ej
             );
           ```
       - CASCADE:<BR>
-        El `CASCADE` hace la accion en cascada es decir al hacerlo en la tabla donde lo haces tambien lo borras en las tablas referidas<br>
+        El `CASCADE` hace la acción en cascada es decir al hacerlo en la tabla donde lo haces también lo borras en las tablas referidas<br>
         ej de update
         ```sql
         CREATE TABLE padres (
@@ -150,7 +149,7 @@ ej
         );
         ```
       - SET NULL:<BR>
-        el `SET NULL` dice que cuando se haga la accion lo pondra a nulo:<br>
+        el `SET NULL` dice que cuando se haga la acción lo pondrá a nulo:<br>
         ej update:
         ```sql
         CREATE TABLE departamentos (
@@ -181,7 +180,7 @@ ej
         );
         ```
       - SET DEFAULT:<BR>
-        El `set default` hace que cuando que al hacer la accion pone el valor por defecto(si no hay valor por defecto y admite nulo pone null)<br>
+        El `set default` hace que cuando que al hacer la acción pone el valor por defecto(si no hay valor por defecto y admite nulo pone null)<br>
         ej update
         ```sql
           CREATE TABLE departamentos (
