@@ -181,7 +181,23 @@ ej
         );
         ```
       - SET DEFAULT:<BR>
-        El `set default` hace que cuando que al hacer la accion pone el valor por defecto(si no hay valor por defecto y admite nulo pone null)
+        El `set default` hace que cuando que al hacer la accion pone el valor por defecto(si no hay valor por defecto y admite nulo pone null)<br>
+        ej update
+        ```sql
+          CREATE TABLE departamentos (
+            id INT PRIMARY KEY,
+            nombre VARCHAR(100) NOT NULL
+          );
+
+          CREATE TABLE empleados (
+            id INT PRIMARY KEY,
+            nombre VARCHAR(100) NOT NULL,
+            departamento_id INT DEFAULT 99,
+            FOREIGN KEY (departamento_id) REFERENCES departamentos(id)
+            ON UPDATE SET DEFAULT
+        );
+        ```
+        ej delete
         ```sql
           CREATE TABLE departamentos (
             id INT PRIMARY KEY,
@@ -196,7 +212,7 @@ ej
               ON DELETE SET DEFAULT
           );
         ```
-        
+
 
   
     
