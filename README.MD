@@ -238,11 +238,32 @@ ej
       c2 nombres DEFAULT 'Málaga'
     );
     ```
-
-
-
-  
-    
-
-
-
+* UNIQUE
+  La restricción `UNIQUE` define que un valor no se puede repetir en una columna hay dos tipos de `UNIQUE`:
+  - CLUSTERED:<br>
+    indica que se ordenara por ese campo solo puede haber uno en la tabla:<br>
+    ej:
+    ```sql
+    id INT UNIQUE CLUSTERED
+    ```
+    ej real:
+    ```sql
+    CREATE TABLE empleados (
+      id INT UNIQUE CLUSTERED, 
+      nombre VARCHAR(100),
+      email VARCHAR(100) UNIQUE 
+    );
+    ```
+  - NON CLUSTERED:<BR>
+    Indica que no se ordenara por ese campo,es la opción que esta por defecto:<br>
+    ej:
+    ```sql
+    email VARCHAR(100) UNIQUE 
+    ```
+    ej real:
+    ```sql
+    CREATE TABLE empleados (
+      id INT PRIMARY KEY, 
+      email VARCHAR(100) UNIQUE 
+    );
+    ```
