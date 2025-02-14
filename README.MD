@@ -211,6 +211,34 @@ ej
               ON DELETE SET DEFAULT
           );
         ```
+* DEFAULT:<BR>
+  Los valores predeterminados suministran un valor cuando no se especifica ninguno<br>
+  ej:
+  ```sql
+  c2 [nombre de variable] DEFAULT [valor por defecto]
+  ```
+  ej real:
+  ```sql
+  CREATE TABLE tabla1(
+    c1 INT PRIMARY KEY,
+    c2 nombres* DEFAULT 'Málaga'
+  );
+  ````
+  - *como crear un tipo:<br>
+    Para facilitar las cosas se puede crear un tipo con lo siguiente:<br>
+    ```sql
+    sp_addtype [nombre de tipo], [tipo]
+    ```
+    ej real:
+    ```sql
+    sp_addtype nombres, 'VARCHAR(30)','NOT NULL';
+    Constraints.
+    CREATE TABLE tabla1(
+      c1 INT PRIMARY KEY,
+      c2 nombres DEFAULT 'Málaga'
+    );
+    ```
+
 
 
   
